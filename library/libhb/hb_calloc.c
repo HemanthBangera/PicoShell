@@ -1,6 +1,6 @@
 #include "libhb.h"
 
-void *hb_calloc(size_t size,size_t total){
+void *  hb_calloc(size_t size,size_t total){
 
     void *ret;
     ret = malloc(size*total);

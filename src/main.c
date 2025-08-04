@@ -1,5 +1,6 @@
 #include "picoshell.h"
 
+
 int main(int argc,char **argv,char **envp){
 
     t_tools tools;
@@ -9,7 +10,8 @@ int main(int argc,char **argv,char **envp){
         exit(0);
     }
 
-    tools.enpv = hb_arrdup(envp);
-
-
+    tools.envp = hb_arrdup(envp);
+    find_pwd(&tools);
+    
 }
+

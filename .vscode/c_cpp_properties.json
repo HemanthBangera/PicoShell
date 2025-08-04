@@ -5,17 +5,21 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/includes",
-                "${workspaceFolder}/src"
+                "${workspaceFolder}/src",
+                "~/PicoShell/includes",
+                "~/PicoShell/src",
+                "/usr/include",
+                "/usr/local/include"
             ],
             "defines": [
                 "_DEBUG",
                 "UNICODE",
                 "_UNICODE"
             ],
-            "compilerPath": "C:\\msys64\\mingw64\\bin\\gcc.exe",
+            "compilerPath": "/usr/bin/gcc",
             "cStandard": "c17",
             "cppStandard": "gnu++17",
-            "intelliSenseMode": "windows-gcc-x64",
+            "intelliSenseMode": "windows-clang-x64",
             "configurationProvider": "ms-vscode.makefile-tools"
         }
     ],
