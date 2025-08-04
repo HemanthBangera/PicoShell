@@ -12,6 +12,10 @@ int main(int argc,char **argv,char **envp){
 
     tools.envp = hb_arrdup(envp);
     find_pwd(&tools);
+    implement_tools(&tools);
+    printf("\n%s\n\n",WELCOME_MSG);
+    minishell_loop(&tools);
+    return (0);
     
 }
 

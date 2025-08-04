@@ -13,6 +13,7 @@
 #include "libhb.h"
 # include "parser.h"
 # include "utils.h"
+# include "color.h"
 
 
 int find_pwd(t_tools *tools);
