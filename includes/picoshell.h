@@ -10,10 +10,11 @@
 # include <signal.h>
 # include <unistd.h>
 
-#include "libhb.h"
+# include "libhb.h"
 # include "parser.h"
 # include "utils.h"
 # include "color.h"
+# include "error.h"
 
 
 int find_pwd(t_tools *tools);
@@ -30,4 +31,6 @@ typedef struct s_global
 }	t_global;
 
 t_global g_global;
+
+
 #endif

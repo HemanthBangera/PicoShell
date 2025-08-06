@@ -16,3 +16,29 @@ int implement_tools(t_tools *tools)
     init_signals();
     return (1);
 }
+
+
+
+
+int picoshell_loop(t_tools *tools){
+    char *tmp;
+
+    tools->args = readline(READLINE_MSG);
+    tmp = hb_strtrim(tools->args," ");
+    free(tools->args);
+    tools->args = tmp;
+    if(!tools->args){
+        hb_putendl_fd("exit",STDERR_FILENO);
+        exit(EXIT_SUCCESS);
+    }
+    if(tools->args[0]=='\0'){
+        reset_tools(tools);
+    }
+    add_history(tools->args);
+    
+    if(!count_quotes(tools->args)){
+        return (hb_error(2,tools));
+    }
+    
+
+}
