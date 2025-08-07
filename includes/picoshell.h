@@ -15,7 +15,7 @@
 # include "utils.h"
 # include "color.h"
 # include "error.h"
-
+# include "lexer.h"
 
 int find_pwd(t_tools *tools);
 int	parse_envp(t_tools *tools);

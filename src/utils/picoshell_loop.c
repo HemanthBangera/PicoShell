@@ -32,13 +32,15 @@ int picoshell_loop(t_tools *tools){
         exit(EXIT_SUCCESS);
     }
     if(tools->args[0]=='\0'){
-        reset_tools(tools);
+        return (reset_tools(tools));
     }
     add_history(tools->args);
     
     if(!count_quotes(tools->args)){
         return (hb_error(2,tools));
     }
+    if(!token_reader(tools))
+        return (hb_error(1,tools));
     
 
 }

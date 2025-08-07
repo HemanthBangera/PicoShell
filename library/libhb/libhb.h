@@ -6,7 +6,7 @@
 # include <stdarg.h>
 
 void *hb_bzero(void* str,size_t n);
-char *ft_strdup(const char *s1);
+char *hb_strdup(const char *s1);
 void *hb_calloc(size_t size,size_t total);
 size_t hb_strlen(char* str);
 int hb_strncmp(const char *s1, const char *s2, size_t n);

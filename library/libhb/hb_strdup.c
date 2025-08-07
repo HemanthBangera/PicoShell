@@ -1,6 +1,6 @@
 #include "libhb.h"
 
-char *ft_strdup(const char *s1)
+char *hb_strdup(const char *s1)
 {
 	char	*s2;
 	size_t	size;
