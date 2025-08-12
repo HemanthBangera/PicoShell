@@ -65,7 +65,7 @@ char	*hb_strtrim(char const *s1, char const *set)
 		return (0);
 	i = 0;
 	char_at_begin = begin_chars(s1, set);
-	len_s1 = ft_strlen(s1);
+	len_s1 = hb_strlen(s1);
 	new_len = len_s1 - (char_at_begin + end_chars(s1, set, len_s1));
 	if (new_len <= 0)
 		new_len = 1;

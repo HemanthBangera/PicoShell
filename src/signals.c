@@ -30,9 +30,9 @@ void sigint_handler(int sig)
 
 void sigquit_handler(int sig)
 {
-	ft_putstr_fd("Quit: ", STDERR_FILENO);
-	ft_putnbr_fd(sig, STDERR_FILENO);
-	ft_putchar_fd('\n', STDERR_FILENO);
+	hb_putstr_fd("Quit: ", STDERR_FILENO);
+	hb_putnbr_fd(sig, STDERR_FILENO);
+	hb_putchar_fd('\n', STDERR_FILENO);
 }
 
 void init_signals(void)

@@ -22,7 +22,7 @@ void hb_lexeradd_back(t_lexer **lst, t_lexer *new);
 
 int handle_token(char *str,int i,t_lexer **lexer_list);
 int check_token(char c);
-int	handle_quotes(int i, char *str, char del);
+int token_reader(t_tools *tools);
 int add_node(char *str,t_tokens token,t_lexer **lexer_list);
 
 

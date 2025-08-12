@@ -7,7 +7,7 @@ char *hb_strdup(const char *s1)
 	size_t	i;
 
 	i = 0;
-	size = ft_strlen(s1);
+	size = hb_strlen(s1);
 	s2 = (char *)malloc((size * sizeof(char)) + 1);
 	if (!s2)
 		return (0);

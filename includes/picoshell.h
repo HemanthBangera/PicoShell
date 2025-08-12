@@ -4,11 +4,11 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <stddef.h>
+# include <unistd.h>
 # include <stdbool.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <signal.h>
-# include <unistd.h>
 
 # include "libhb.h"
 # include "parser.h"

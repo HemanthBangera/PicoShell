@@ -25,7 +25,7 @@ char **hb_arrdup(char **arr)
 	return (rtn);
 }
 
-int	find_matching_quote(char *line, int i, int *num_del, int del)
+int	find_matching_quotes(char *line, int i, int *num_del, int del)
 {
 	int	j;
 

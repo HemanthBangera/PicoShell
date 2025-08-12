@@ -7,11 +7,11 @@ int	count_c(char const *s, char c)
 
 	i = 0;
 	c_count = 0;
-	while (i < ft_strlen(s))
+	while (i < hb_strlen(s))
 	{
 		if (s[i] != c)
 			c_count++;
-		while (s[i] != c && i < ft_strlen(s))
+		while (s[i] != c && i < hb_strlen(s))
 			i++;
 		i++;
 	}
@@ -29,6 +29,44 @@ void free_arr(char **arr){
 
     free(arr);
 }
+
+int	strlen_c(char const *s, char c, int s_i)
+{
+	int	i;
+
+	i = 0;
+	while (s[s_i] != c && s[s_i] != '\0')
+	{
+		s_i++;
+		i++;
+	}
+	return (i);
+}
+
+char	**create_arr(char const *s, char c, int c_count, char **split_arr)
+{
+	int	s_i;
+	int	s_a_i;
+	int	num_of_char;
+
+	s_i = 0;
+	s_a_i = 0;
+	num_of_char = 0;
+	while (s_a_i < c_count)
+	{
+		while (s[s_i] == c)
+			s_i++;
+		num_of_char = strlen_c(s, c, s_i);
+		split_arr[s_a_i] = (char *)hb_calloc(num_of_char + 1, sizeof(char));
+		if (!split_arr)
+			return (NULL);
+		hb_strlcpy(split_arr[s_a_i], &s[s_i], num_of_char + 1);
+		s_i += num_of_char;
+		s_a_i++;
+	}
+	return (split_arr);
+}
+
 
 char **hb_split(char const *s, char c)
 {

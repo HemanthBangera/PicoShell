@@ -25,7 +25,7 @@ int add_node(char *str,t_tokens token,t_lexer **lexer_list)
     return (1);
 }
 
-int read_words(int i,char *str,t_lexer **lexer_list)
+int read_words(char *str,int i,t_lexer **lexer_list)
 {
     int j=0;
 
