@@ -29,13 +29,21 @@ typedef struct s_tools
     char **envp;
     char *pwd;
     char *old_pwd;
-    struct s_simple_cmds *simple_cmds;
+    t_simple_cmds *simple_cmds;
 	t_lexer	*lexer_list;
     int	pipes;
 	int	*pid;
 	bool heredoc;
 	bool reset;
 } t_tools;
+
+typedef struct s_parser_tools
+{
+	t_lexer			*lexer_list;
+	t_lexer			*redirections;
+	int				num_redirections;
+	struct s_tools	*tools;
+}	t_parser_tools;
 
 typedef struct s_simple_cmds
 {
@@ -50,5 +58,9 @@ typedef struct s_simple_cmds
 
 int find_pwd(t_tools *tools);
 int parse_envp(t_tools *tools);
+
+
+
+void count_pipes(t_lexer *lexer_list,t_tools *tools);
 
 #endif

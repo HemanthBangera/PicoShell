@@ -6,7 +6,7 @@ char **hb_arrdup(char **arr);
 int implement_tools(t_tools *tools);
 int	picoshell_loop(t_tools *tools);
 int count_quotes(char* str);
-int	find_matching_quote(char *line, int i, int *num_del, int del);
+int	find_matching_quotes(char *line, int i, int *num_del, int del);
 
 
 
@@ -16,6 +16,10 @@ int	find_matching_quote(char *line, int i, int *num_del, int del);
 
 t_lexer	*hb_lexernew(char *str, int token);
 void hb_lexeradd_back(t_lexer **lst, t_lexer *new);
+void hb_lexerclear(t_lexer **lst);
+void	hb_lexerdelone(t_lexer **lst, int key);
+void	hb_lexerdel_first(t_lexer **lst);
+t_lexer	*hb_lexerclear_one(t_lexer **lst);
 
 
 
