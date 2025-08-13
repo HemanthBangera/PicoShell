@@ -1,5 +1,32 @@
 #include "picoshell.h"
 
+t_parser_tools	init_parser_tools(t_lexer *lexer_list, t_tools *tools)
+{
+	t_parser_tools	parser_tools;
+
+	parser_tools.lexer_list = lexer_list;
+	parser_tools.redirections = NULL;
+	parser_tools.num_redirections = 0;
+	parser_tools.tools = tools;
+	return (parser_tools);
+}
+
+int	count_args(t_lexer *lexer_list)
+{
+	t_lexer	*tmp;
+	int		i;
+
+	i = 0;
+	tmp = lexer_list;
+	while (tmp && tmp->token != PIPE)
+	{
+		if (tmp->i >= 0)
+			i++;
+		tmp = tmp->next;
+	}
+	return (i);
+}
+
 void count_pipes(t_lexer *lexer_list,t_tools *tools)
 {
     t_lexer *tmp;

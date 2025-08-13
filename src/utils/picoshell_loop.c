@@ -1,6 +1,5 @@
 #include "picoshell.h"
 
-int minishell_loop(t_tools *tools);
 
 int implement_tools(t_tools *tools)
 {
@@ -41,6 +40,7 @@ int picoshell_loop(t_tools *tools){
     }
     if(!token_reader(tools))
         return (hb_error(1,tools));
-    
+    parser(tools);
+
 
 }

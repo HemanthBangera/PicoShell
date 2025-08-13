@@ -1,11 +1,10 @@
 #include "error.h"
 
-
-
-
-
-
-
+void parser_error(int error,t_tools *tools,t_lexer* lexer_list)
+{
+    hb_lexerclear(lexer_list);
+    hb_error(error,tools);
+}
 
 int parser_double_token_error(t_tools *tools,t_lexer *lexer_list,t_tokens token)
 {
@@ -27,6 +26,4 @@ int parser_double_token_error(t_tools *tools,t_lexer *lexer_list,t_tokens token)
     hb_lexerclear(&lexer_list);
 
     return(EXIT_FAILURE);
-
-
 }

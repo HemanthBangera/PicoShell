@@ -9,6 +9,7 @@ int count_quotes(char* str);
 int	find_matching_quotes(char *line, int i, int *num_del, int del);
 
 
+t_simple_cmds *hb_simple_cmdsnew(char **str,int num_redirections, t_lexer *redirections);
 
 
 
@@ -16,6 +17,7 @@ int	find_matching_quotes(char *line, int i, int *num_del, int del);
 
 t_lexer	*hb_lexernew(char *str, int token);
 void hb_lexeradd_back(t_lexer **lst, t_lexer *new);
+void	hb_simple_cmdsadd_back(t_simple_cmds **lst, t_simple_cmds *new);
 void hb_lexerclear(t_lexer **lst);
 void	hb_lexerdelone(t_lexer **lst, int key);
 void	hb_lexerdel_first(t_lexer **lst);

@@ -58,9 +58,18 @@ typedef struct s_simple_cmds
 
 int find_pwd(t_tools *tools);
 int parse_envp(t_tools *tools);
+int parser(t_tools *tools);
 
 
-
+int	count_args(t_lexer *lexer_list);
 void count_pipes(t_lexer *lexer_list,t_tools *tools);
+t_parser_tools	init_parser_tools(t_lexer *lexer_list, t_tools *tools);
+
+
+
+void rm_redirections(t_parser_tools *parser_tools);
+int	add_new_redirection(t_lexer *tmp, t_parser_tools *parser_tools);
+
+
 
 #endif
