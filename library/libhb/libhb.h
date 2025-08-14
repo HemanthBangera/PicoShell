@@ -20,6 +20,13 @@ void hb_putnbr_fd(int n, int fd);
 char *hb_strtrim(char const *s1, char const *set);
 void hb_putendl_fd(char *s,int i);
 size_t	hb_strlcpy(char *dst, const char *src, size_t dstsize);
+int	hb_isdigit(int c);
+int	determine_length(long long n, int neg_or_pos);
+char *fill_arr(long long n, char *arr, int i, int neg_or_pos);
+char *hb_itoa(int n);
+
+
+
 
 
 

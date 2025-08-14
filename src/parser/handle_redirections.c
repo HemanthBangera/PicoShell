@@ -6,7 +6,7 @@ int	add_new_redirection(t_lexer *tmp, t_parser_tools *parser_tools)
 	int		index_1;
 	int		index_2;
 
-	node = hb_lexernew(ft_strdup(tmp->next->str), tmp->token);
+	node = hb_lexernew(hb_strdup(tmp->next->str), tmp->token);
 	if (!node)
 		parser_error(1, parser_tools->tools, parser_tools->lexer_list);
 	hb_lexeradd_back(&parser_tools->redirections, node);

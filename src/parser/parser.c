@@ -24,7 +24,7 @@ t_simple_cmds *initialize_cmd(t_parser_tools *parser_tools)
         }
         arg_size--;
     }
-    return (ft_simple_cmdsnew(str,parser_tools->num_redirections,parser_tools->redirections));
+    return (hb_simple_cmdsnew(str,parser_tools->num_redirections,parser_tools->redirections));
 }
 
 int handle_pipe_errors(t_tools *tools,t_tokens token)

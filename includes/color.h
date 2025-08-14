@@ -17,5 +17,6 @@
 
 
 # define READLINE_MSG	"\033[1;36mpicoshell\033[34m$ \033[0m"
+# define HEREDOC_MSG	"\033[1;34m> \033[0m"
 
 #endif 

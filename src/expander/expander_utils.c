@@ -58,6 +58,6 @@ char	*delete_quotes(char *str, char c)
 int	question_mark(char **tmp)
 {
 	free(*tmp);
-	*tmp = ft_itoa(g_global.error_num);
-	return (ft_strlen(*tmp) + 1);
+	*tmp = hb_itoa(g_global.error_num);
+	return (hb_strlen(*tmp) + 1);
 }

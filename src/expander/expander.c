@@ -37,7 +37,7 @@ int	handle_digit_after_dollar(int j, char *str)
 	i = j;
 	if (str[j] == '$')
 	{
-		if (ft_isdigit(str[j + 1]) == 1)
+		if (hb_isdigit(str[j + 1]) == 1)
 		{
 			j += 2;
 		}
