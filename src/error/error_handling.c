@@ -40,3 +40,11 @@ int	export_error(char *c)
 	hb_putendl_fd("not a valid identifier", STDERR_FILENO);
 	return (EXIT_FAILURE);
 }
+
+int	cmd_not_found(char *str)
+{
+	hb_putstr_fd("minishell: ", STDERR_FILENO);
+	hb_putstr_fd(str, STDERR_FILENO);
+	hb_putstr_fd(": command not found\n", STDERR_FILENO);
+	return (127);
+}

@@ -1,5 +1,45 @@
 #include "executor.h"
 
+int find_cmd(t_simple_cmds *cmd,t_tools *tools)
+{
+	int i=0;
+	char *mycmd;
+
+	cmd->str = resplit_str(cmd->str);
+	if (!access(cmd->str[0], F_OK))
+		execve(cmd->str[0], cmd->str, tools->envp);
+	while (tools->paths[i])
+	{
+		mycmd = hb_strjoin(tools->paths[i], cmd->str[0]);
+		if (!access(mycmd, F_OK))
+			execve(mycmd, cmd->str, tools->envp);
+		free(mycmd);
+		i++;
+	}
+	return (cmd_not_found(cmd->str[0]));
+
+}
+
+void handle_cmd(t_simple_cmds *cmd,t_tools *tools)
+{
+	int exit_code=0;
+
+	if(cmd->redirections)
+	{
+		if(check_redirections(cmd))
+			exit(1);
+	}
+	if(cmd->builtin != NULL)
+	{
+		exit_code = cmd->builtin(tools,cmd);
+		exit(exit_code);
+	}
+	else if (cmd->str[0][0] != '\0')
+		exit_code = find_cmd(cmd, tools);
+	exit(exit_code);
+		
+}
+
 void single_cmd(t_simple_cmds *cmd,t_tools *tools)
 {
     int pid;
@@ -13,4 +53,13 @@ void single_cmd(t_simple_cmds *cmd,t_tools *tools)
 		return ;
 	}
 	send_heredoc(tools, cmd);
+	pid = fork();
+	if(pid<0)
+		hb_error(5,tools);
+	if(pid ==0)
+		 handle_cmd(cmd,tools);
+	waitpid(pid,&status,0);
+	if(WIFEEXITED(status))
+		g_global.error_num = WEXITSTATUS(status);
+
 }
