@@ -5,7 +5,7 @@ void free_tools(t_tools *tools)
     free_arr(tools->paths);
 	free_arr(tools->envp);
 	free(tools->args);
-	ft_simple_cmdsclear(&tools->simple_cmds);
+	hb_simple_cmdsclear(&tools->simple_cmds);
 	free(tools->pwd);
 	free(tools->old_pwd);
 	if (tools->pipes)
@@ -31,7 +31,7 @@ void	determine_exit_code(char **str)
 	if (!str[1])
 		exit_code = 0;
 	else if (is_str_digit(str[1]))
-		exit_code = ft_atoi(str[1]);
+		exit_code = hb_atoi(str[1]);
 	else
 	{
 		hb_putstr_fd("minishell: exit: ", STDERR_FILENO);

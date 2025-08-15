@@ -45,9 +45,9 @@ int hb_heredoc(t_tools *tools,t_lexer *heredoc,char *file_name)
 
     sl = EXIT_SUCCESS;
     if ((heredoc->str[0] == '\"'
-			&& heredoc->str[ft_strlen(heredoc->str) - 1] == '\"')
+			&& heredoc->str[hb_strlen(heredoc->str) - 1] == '\"')
 		|| (heredoc->str[0] == '\''
-			&& heredoc->str[ft_strlen(heredoc->str) - 1] == '\''))
+			&& heredoc->str[hb_strlen(heredoc->str) - 1] == '\''))
 		quotes = true;
 	else
 		quotes = false;

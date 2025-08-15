@@ -7,9 +7,9 @@ char	*find_path_ret(char *str, t_tools *tools)
 	i = 0;
 	while (tools->envp[i])
 	{
-		if (!ft_strncmp(tools->envp[i], str, ft_strlen(str)))
-			return (ft_substr(tools->envp[i], ft_strlen(str),
-					ft_strlen(tools->envp[i]) - ft_strlen(str)));
+		if (!hb_strncmp(tools->envp[i], str, hb_strlen(str)))
+			return (hb_substr(tools->envp[i], hb_strlen(str),
+					hb_strlen(tools->envp[i]) - hb_strlen(str)));
 		i++;
 	}
 	return (NULL);
@@ -28,7 +28,7 @@ int specific_path(t_tools *tools,char *str)
         str = hb_substr(str,0,hb_strlen(str)-1);
         hb_putstr_fd(str,STDERR_FILENO);
         free(str);
-        ft_putendl_fd("not set",STDERR_FILENO);
+        hb_putendl_fd("not set",STDERR_FILENO);
     }
     return ret;
 }
@@ -41,15 +41,15 @@ void	add_path_to_env(t_tools *tools)
 	i = 0;
 	while (tools->envp[i])
 	{
-		if (!ft_strncmp(tools->envp[i], "PWD=", 4))
+		if (!hb_strncmp(tools->envp[i], "PWD=", 4))
 		{
-			tmp = ft_strjoin("PWD=", tools->pwd);
+			tmp = hb_strjoin("PWD=", tools->pwd);
 			free(tools->envp[i]);
 			tools->envp[i] = tmp;
 		}
-		else if (!ft_strncmp(tools->envp[i], "OLDPWD=", 7) && tools->old_pwd)
+		else if (!hb_strncmp(tools->envp[i], "OLDPWD=", 7) && tools->old_pwd)
 		{
-			tmp = ft_strjoin("OLDPWD=", tools->old_pwd);
+			tmp = hb_strjoin("OLDPWD=", tools->old_pwd);
 			free(tools->envp[i]);
 			tools->envp[i] = tmp;
 		}
@@ -72,8 +72,8 @@ int mini_cd(t_tools *tools,t_simple_cmds *simple_cmd)
         ret = chdir(simple_cmd->str[1]);
         if (ret != 0)
 		{
-			ft_putstr_fd("minishell: ", STDERR_FILENO);
-			ft_putstr_fd(simple_cmd->str[1], STDERR_FILENO);
+			hb_putstr_fd("minishell: ", STDERR_FILENO);
+			hb_putstr_fd(simple_cmd->str[1], STDERR_FILENO);
 			perror(" ");
 		}
     }
