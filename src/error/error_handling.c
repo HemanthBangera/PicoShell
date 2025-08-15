@@ -27,3 +27,16 @@ int parser_double_token_error(t_tools *tools,t_lexer *lexer_list,t_tokens token)
 
     return(EXIT_FAILURE);
 }
+
+int	export_error(char *c)
+{
+	hb_putstr_fd("minishell: export: ", STDERR_FILENO);
+	if (c)
+	{
+		hb_putchar_fd('\'', STDERR_FILENO);
+		hb_putstr_fd(c, STDERR_FILENO);
+		hb_putstr_fd("\': is ", STDERR_FILENO);
+	}
+	hb_putendl_fd("not a valid identifier", STDERR_FILENO);
+	return (EXIT_FAILURE);
+}

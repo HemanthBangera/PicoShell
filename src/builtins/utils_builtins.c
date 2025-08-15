@@ -14,3 +14,23 @@ size_t	equal_sign(char *str)
 	}
 	return (0);
 }
+
+void change_path(t_tools *tools)
+{
+	char *tmp;
+	tmp = hb_strdup(tools->pwd);
+	free(tools->old_pwd);
+	tools->old_pwd = tmp;
+	free(tools->pwd);
+	tools->pwd = getcwd(NULL,sizeof(NULL));
+}
+
+int	check_valid_identifier(char c)
+{
+	return (c == '|' || c == '<' || c == '>' || c == '[' || c == ']'
+		|| c == '\'' || c == '\"' || c == ' ' || c == ',' || c == '.'
+		|| c == ':' || c == '/' || c == '{' || c == '}' || c == '+'
+		|| c == '^' || c == '%' || c == '#' || c == '@' || c == '!'
+		|| c == '~'
+		|| c == '=' || c == '-' || c == '?' || c == '&' || c == '*');
+}
