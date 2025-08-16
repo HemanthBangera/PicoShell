@@ -17,6 +17,7 @@
 # include "error.h"
 # include "lexer.h"
 # include "builtins.h"
+# include "executor.h"
 
 int find_pwd(t_tools *tools);
 int	parse_envp(t_tools *tools);
@@ -31,6 +32,9 @@ char *expander_str(t_tools *tools, char *str);char *detect_dollar_sign(t_tools *
 int	handle_digit_after_dollar(int j, char *str);
 int loop_if_dollar_sign(t_tools *tools,char *str,char **tmp,int j);
 int	question_mark(char **tmp);
+void sigint_handler(int sig);
+void sigquit_handler(int sig);
+void init_signals(void);
 
 
 

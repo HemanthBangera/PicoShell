@@ -16,6 +16,35 @@ int implement_tools(t_tools *tools)
     return (1);
 }
 
+int	reset_tools(t_tools *tools)
+{
+	hb_simple_cmdsclear(&tools->simple_cmds);
+	free(tools->args);
+	if (tools->pid)
+		free(tools->pid);
+	free_arr(tools->paths);
+	implement_tools(tools);
+	tools->reset = true;
+	minishell_loop(tools);
+	return (1);
+}
+
+
+int prepare_executor(t_tools *tools)
+{
+    signal(SIGQUIT, sigquit_handler);
+    g_global.in_cmd = 1;
+    if(tools->pipes == 0)
+        single_cmd(tools->simple_cmds,tools);
+    else{
+        tools->pid = hb_calloc(sizeof(int),tools->pipes+2);
+        if(!tools->pid)
+            return hb_error(1,tools);
+        executor(tools);
+    }
+    g_global.in_cmd = 0;
+    return EXIT_SUCCESS;
+}
 
 
 
@@ -41,6 +70,8 @@ int picoshell_loop(t_tools *tools){
     if(!token_reader(tools))
         return (hb_error(1,tools));
     parser(tools);
-
+    prepare_executor(tools);
+	reset_tools(tools);
+	return (1);
 
 }

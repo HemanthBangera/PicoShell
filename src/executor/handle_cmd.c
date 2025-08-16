@@ -20,6 +20,19 @@ int find_cmd(t_simple_cmds *cmd,t_tools *tools)
 
 }
 
+void	dup_cmd(t_simple_cmds *cmd, t_tools *tools, int end[2], int fd_in)
+{
+	if (cmd->prev && dup2(fd_in, STDIN_FILENO) < 0)
+		hb_error(4, tools);
+	close(end[0]);
+	if (cmd->next && dup2(end[1], STDOUT_FILENO) < 0)
+		hb_error(4, tools);
+	close(end[1]);
+	if (cmd->prev)
+		close(fd_in);
+	handle_cmd(cmd, tools);
+}
+
 void handle_cmd(t_simple_cmds *cmd,t_tools *tools)
 {
 	int exit_code=0;

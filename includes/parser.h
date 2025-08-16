@@ -20,6 +20,16 @@ typedef struct s_lexer
     struct s_lexer *prev;
 } t_lexer;
 
+typedef struct s_simple_cmds
+{
+    char					**str;
+    int						(*builtin)(t_tools *, struct s_simple_cmds *);
+    int						num_redirections;
+    char					*hd_file_name;
+    t_lexer					*redirections;
+    struct s_simple_cmds	*next;
+    struct s_simple_cmds	*prev;
+}	t_simple_cmds;
 
 
 typedef struct s_tools
@@ -45,16 +55,6 @@ typedef struct s_parser_tools
 	struct s_tools	*tools;
 }	t_parser_tools;
 
-typedef struct s_simple_cmds
-{
-	char					**str;
-	int						(*builtin)(t_tools *, struct s_simple_cmds *);
-	int						num_redirections;
-	char					*hd_file_name;
-	t_lexer					*redirections;
-	struct s_simple_cmds	*next;
-	struct s_simple_cmds	*prev;
-}	t_simple_cmds;
 
 int find_pwd(t_tools *tools);
 int parse_envp(t_tools *tools);
