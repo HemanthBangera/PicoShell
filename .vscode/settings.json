@@ -1,8 +1,0 @@
-{
-  "files.associations": {
-    "picoshell.h": "c",
-    "builtins.h": "c",
-    "sstream": "c",
-    "dirent.h": "c"
-  }
-}

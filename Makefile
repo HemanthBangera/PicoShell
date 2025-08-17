@@ -83,11 +83,19 @@ LIBHB_SRCS = $(wildcard $(LIBDIR)/*.c)
 # - All .c files in error/ subdirectory
 # - All .c files in lexer/ subdirectory
 # - All .c files in utils/ subdirectory
+# - All .c files in builtins/ subdirectory
+# - All .c files in executor/ subdirectory
+# - All .c files in expander/ subdirectory
+# - All .c files in parser/ subdirectory
 MAIN_SRCS = $(SRCDIR)/main.c \
            $(SRCDIR)/signals.c \
            $(wildcard $(SRCDIR)/error/*.c) \
            $(wildcard $(SRCDIR)/lexer/*.c) \
-           $(wildcard $(SRCDIR)/utils/*.c)
+           $(wildcard $(SRCDIR)/utils/*.c) \
+           $(wildcard $(SRCDIR)/builtins/*.c) \
+           $(wildcard $(SRCDIR)/executor/*.c) \
+           $(wildcard $(SRCDIR)/expander/*.c) \
+           $(wildcard $(SRCDIR)/parser/*.c)
 
 # ============================================================================
 # OBJECT FILE MAPPING
