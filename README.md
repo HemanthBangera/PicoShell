@@ -43,7 +43,7 @@ typedef struct s_lexer {
 } t_lexer;
 ```
 
-###The Parser
+###  The Parser
 The parser converts the token stream into executable command structures. Instead of building a traditional AST, it creates a flat command structure optimized for shell execution.
 
 **Key Components:**
@@ -66,7 +66,7 @@ typedef struct s_simple_cmds {
 } t_simple_cmds;
 ```
 
-###Builtins
+### Builtins
 Built-in commands are implemented as function pointers stored in the command structure, allowing for direct execution without external process creation.
 
 **Implemented Builtins:**
@@ -79,7 +79,7 @@ Built-in commands are implemented as function pointers stored in the command str
 `mini_unset()`: Environment variable removal
 **Implementation: Each builtin is registered during command initialization and executed directly within the shell process, avoiding fork/exec overhead.**
 
-###Executor
+### Executor
 The executor manages command execution, handling both built-in commands and external programs through process creation and management.
 
 **Key Components:**
@@ -97,7 +97,7 @@ The executor manages command execution, handling both built-in commands and exte
 4.Execute commands with proper environment
 5.Wait for completion and handle exit codes
 
-###Expander
+### Expander
 The expander handles environment variable substitution and special parameter expansion within command arguments.
 
 **Key Components:**
@@ -113,7 +113,7 @@ The expander handles environment variable substitution and special parameter exp
 -Proper handling within quoted strings
 -Error handling for undefined variables
 
-###Heredoc
+###  Heredoc
 Heredoc functionality allows multi-line input processing with delimiter-based termination, supporting variable expansion within the content.
 
 **Implementation:**
@@ -132,7 +132,7 @@ Heredoc functionality allows multi-line input processing with delimiter-based te
 -Set up input redirection to temporary file
 -Clean up temporary files after execution
 
-###Single Command
+### Single Command
 Single command execution handles individual commands with their arguments, redirections, and environment setup.
 
 **Process:**
@@ -142,7 +142,7 @@ Single command execution handles individual commands with their arguments, redir
 -Execute command (builtin or external)
 -Handle return values and cleanup
 
-###Multiple Commands
+### Multiple Commands
 Pipeline execution manages multiple commands connected through pipes, handling inter-process communication and data flow.
 
 **Implementation:**
@@ -159,7 +159,7 @@ Pipeline execution manages multiple commands connected through pipes, handling i
 4.Execute all commands concurrently
 5.Wait for completion and collect exit codes
 
-###Reset
+### Reset
 The reset functionality ensures proper cleanup and state restoration between command executions and error conditions.
 
 Components:
