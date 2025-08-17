@@ -70,104 +70,104 @@ typedef struct s_simple_cmds {
 Built-in commands are implemented as function pointers stored in the command structure, allowing for direct execution without external process creation.
 
 **Implemented Builtins:**
-`mini_cd()`: Directory navigation with error handling
-`mini_echo()`: Text output with flag support
-`mini_env()`: Environment variable display
-`mini_exit()`: Shell termination with exit codes
-`mini_export()`: Environment variable creation/modification
-`mini_pwd()`: Current directory display
-`mini_unset()`: Environment variable removal
+- `mini_cd()`: Directory navigation with error handling
+- `mini_echo()`: Text output with flag support
+- `mini_env()`: Environment variable display
+- `mini_exit()`: Shell termination with exit codes
+- `mini_export()`: Environment variable creation/modification
+- `mini_pwd()`: Current directory display
+- `mini_unset()`: Environment variable removal
 **Implementation: Each builtin is registered during command initialization and executed directly within the shell process, avoiding fork/exec overhead.**
 
 ### Executor
 The executor manages command execution, handling both built-in commands and external programs through process creation and management.
 
 **Key Components:**
--`executor()`: Main execution controller
--`handle_cmd()`: Manages individual command execution
--`check_redirections()`: Sets up I/O redirection
--Process management with `fork()` and `execve()`
--Pipeline handling with pipe creation and management
--Signal handling integration
+- `executor()`: Main execution controller
+- `handle_cmd()`: Manages individual command execution
+- `check_redirections()`: Sets up I/O redirection
+- Process management with `fork()` and `execve()`
+- Pipeline handling with pipe creation and management
+- Signal handling integration
 
 **Execution Flow:**
-1.Check for builtin commands
-2.Set up redirections and pipes
-3.Fork processes for external commands
-4.Execute commands with proper environment
-5.Wait for completion and handle exit codes
+1. Check for builtin commands
+2. Set up redirections and pipes
+3. Fork processes for external commands
+4. Execute commands with proper environment
+5. Wait for completion and handle exit codes
 
 ### Expander
 The expander handles environment variable substitution and special parameter expansion within command arguments.
 
 **Key Components:**
--`expander()`: Main expansion function
--Variable expansion ($VAR, ${VAR})
--Special parameter handling ($?, $0)
--Quote-aware expansion
--Integration with lexer for token processing
+- `expander()`: Main expansion function
+- Variable expansion ($VAR, ${VAR})
+- Special parameter handling ($?, $0)
+- Quote-aware expansion
+- Integration with lexer for token processing
 
 **Features:**
--Environment variable substitution
--Exit status expansion ($?)
--Proper handling within quoted strings
--Error handling for undefined variables
+- Environment variable substitution
+- Exit status expansion ($?)
+- Proper handling within quoted strings
+- Error handling for undefined variables
 
 ###  Heredoc
 Heredoc functionality allows multi-line input processing with delimiter-based termination, supporting variable expansion within the content.
 
 **Implementation:**
 
--`heredoc()`: Main heredoc processor
--Temporary file creation in build directory
--Delimiter matching and termination
--Variable expansion within heredoc content
--Integration with redirection system
--Proper cleanup of temporary files
+- `heredoc()`: Main heredoc processor
+- Temporary file creation in build directory
+- Delimiter matching and termination
+- Variable expansion within heredoc content
+- Integration with redirection system
+- Proper cleanup of temporary files
 
 **Process:**
--Create temporary file with unique name
--Read input until delimiter is found
--Process variable expansion if required
--Set up input redirection to temporary file
--Clean up temporary files after execution
+- Create temporary file with unique name
+- Read input until delimiter is found
+- Process variable expansion if required
+- Set up input redirection to temporary file
+- Clean up temporary files after execution
 
 ### Single Command
 Single command execution handles individual commands with their arguments, redirections, and environment setup.
 
 **Process:**
--Parse command and arguments
--Check for builtin commands
--Set up any redirections
--Execute command (builtin or external)
--Handle return values and cleanup
+- Parse command and arguments
+- Check for builtin commands
+- Set up any redirections
+- Execute command (builtin or external)
+- Handle return values and cleanup
 
 ### Multiple Commands
 Pipeline execution manages multiple commands connected through pipes, handling inter-process communication and data flow.
 
 **Implementation:**
--Pipe creation between commands
--Process coordination with proper file descriptor management
--Sequential execution with data flow
--Error propagation through pipeline
--Proper cleanup of all processes
+- Pipe creation between commands
+- Process coordination with proper file descriptor management
+- Sequential execution with data flow
+- Error propagation through pipeline
+- Proper cleanup of all processes
 
 **Pipeline Process:**
-1.Create pipes for each connection
-2.Fork processes for each command
-3.Set up file descriptors for data flow
-4.Execute all commands concurrently
-5.Wait for completion and collect exit codes
+1. Create pipes for each connection
+2. Fork processes for each command
+3. Set up file descriptors for data flow
+4. Execute all commands concurrently
+5. Wait for completion and collect exit codes
 
 ### Reset
 The reset functionality ensures proper cleanup and state restoration between command executions and error conditions.
 
 Components:
--`reset_tools()`: Clears shell state
--Memory cleanup for all data structures
--File descriptor closure
--Process cleanup and signal handling
--State restoration for error recovery
+- `reset_tools()`: Clears shell state
+- Memory cleanup for all data structures
+- File descriptor closure
+- Process cleanup and signal handling
+- State restoration for error recovery
 
 ## Quick Start
 
