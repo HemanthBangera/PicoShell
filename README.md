@@ -192,3 +192,14 @@ make
 # Run the shell
 ./picoshell
 ```
+
+---
+
+<p align="center">
+  ⭐ <b>If you found PicoShell useful, please consider starring the repo!</b> ⭐
+</p>
+
+<p align="center">
+  Made with ❤️ by <b>Hemanth</b>
+</p>
+
