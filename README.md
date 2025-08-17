@@ -20,10 +20,32 @@ A lightweight shell implementation written in C that recreates core functionalit
 - **Error Handling**: Comprehensive error reporting
 - **Memory Safe**: Proper memory management and cleanup
 
+## Implementation Details
+
+### The Lexer
+The lexer tokenizes input strings into meaningful tokens using a linked list structure (`t_lexer`). It processes the input character by character, identifying operators, words, and special characters.
+
+**Key Components:**
+- `token_reader()`: Main tokenization function that processes the input string
+- `handle_token()`: Identifies and processes operators (`|`, `>`, `<`, `>>`, `<<`)
+- `read_words()`: Extracts command words and arguments
+- `handle_quotes()`: Manages single and double quote processing
+- Token types: `PIPE`, `GREAT`, `GREAT_GREAT`, `LESS`, `LESS_LESS`
+
+**Structure:**
+```c
+typedef struct s_lexer {
+    char *str;              // Token string
+    t_tokens token;         // Token type
+    int i;                  // Token index
+    struct s_lexer *next;   // Next token
+    struct s_lexer *prev;   // Previous token
+} t_lexer;
+
+
 ## Quick Start
 
 ### Prerequisites
-
 - GCC compiler (C99 or later)
 - Make
 - Readline library (libreadline-dev on Ubuntu/Debian, readline on macOS via Homebrew)
