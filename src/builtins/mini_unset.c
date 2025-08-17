@@ -48,14 +48,14 @@ int	unset_error(t_simple_cmds *simple_cmd)
 	i = 0;
 	if (!simple_cmd->str[1])
 	{
-		hb_putendl_fd("minishell: unset: not enough arguments", STDERR_FILENO);
+		hb_putendl_fd("picoshell: unset: not enough arguments", STDERR_FILENO);
 		return (EXIT_FAILURE);
 	}
 	while (simple_cmd->str[1][i])
 	{
 		if (simple_cmd->str[1][i++] == '/')
 		{
-			hb_putstr_fd("minishell: unset: `", STDERR_FILENO);
+			hb_putstr_fd("picoshell: unset: `", STDERR_FILENO);
 			hb_putstr_fd(simple_cmd->str[1], STDERR_FILENO);
 			hb_putendl_fd("': not a valid identifier", STDERR_FILENO);
 			return (EXIT_FAILURE);
@@ -63,7 +63,7 @@ int	unset_error(t_simple_cmds *simple_cmd)
 	}
 	if (equal_sign(simple_cmd->str[1]) != 0)
 	{
-		hb_putendl_fd("minishell: unset: not a valid identifier",
+		hb_putendl_fd("picoshell: unset: not a valid identifier",
 			STDERR_FILENO);
 		return (EXIT_FAILURE);
 	}

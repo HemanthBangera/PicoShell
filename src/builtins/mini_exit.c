@@ -31,10 +31,10 @@ void	determine_exit_code(char **str)
 	if (!str[1])
 		exit_code = 0;
 	else if (is_str_digit(str[1]))
-		exit_code = hb_atoi(str[1]);
+		exit_code = atoi(str[1]);
 	else
 	{
-		hb_putstr_fd("minishell: exit: ", STDERR_FILENO);
+		hb_putstr_fd("picoshell: exit: ", STDERR_FILENO);
 		hb_putstr_fd(str[1], STDERR_FILENO);
 		hb_putstr_fd(": numeric argument required\n", STDERR_FILENO);
 		exit_code = 255;
@@ -47,10 +47,10 @@ int mini_exit(t_tools *tools,t_simple_cmds *simple_cmd)
 {
     char **str;
 
-    hb_putendl_fd("exit",STDERR_FILENO);
+    hb_putendl_fd("Exiting picoshell...",STDERR_FILENO);
     if(simple_cmd->str[1] && simple_cmd->str[2])
     {
-        hb_putstr_fd("minishell: exit: too many arguments\n",STDERR_FILENO);
+        hb_putstr_fd("picoshell: exit: too many arguments\n",STDERR_FILENO);
         return EXIT_FAILURE;
     }
     str = hb_arrdup(simple_cmd->str);

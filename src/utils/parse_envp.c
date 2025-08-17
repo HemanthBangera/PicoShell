@@ -9,7 +9,7 @@ int find_pwd(t_tools *tools){
                 ,hb_strlen(tools->envp[i])-4);
         }
         if(!hb_strncmp(tools->envp[i],"OLDPWD=",7)){
-            tools->old_pwd = hb_substr(tools->envp[i],4
+            tools->old_pwd = hb_substr(tools->envp[i],7
                 ,hb_strlen(tools->envp[i])-7);
         }
         i++;
@@ -37,9 +37,13 @@ int parse_envp(t_tools *tools){
     path_from_envp = find_path(tools->envp);
     tools->paths = hb_split(path_from_envp,':');
     free(path_from_envp);
+    
+    if (!tools->paths) {
+        return (EXIT_FAILURE);
+    }
 
     while(tools->paths[i]){
-        if(hb_strncmp(&tools->envp[i][hb_strlen(tools->paths[i])-1],"/",1) != 0)
+        if(hb_strncmp(&tools->paths[i][hb_strlen(tools->paths[i])-1],"/",1) != 0)
         {
             tmp = hb_strjoin(tools->paths[i],"/");
             free(tools->paths[i]);

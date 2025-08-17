@@ -20,13 +20,13 @@ int	handle_infile(char *file)
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 	{
-		hb_putstr_fd("minishell: infile: No such file or directory\n",
+		hb_putstr_fd("picoshell: infile: No such file or directory\n",
 			STDERR_FILENO);
 		return (EXIT_FAILURE);
 	}
 	if (fd > 0 && dup2(fd, STDIN_FILENO) < 0)
 	{
-		hb_putstr_fd("minishell: pipe error\n", STDERR_FILENO);
+		hb_putstr_fd("picoshell: pipe error\n", STDERR_FILENO);
 		return (EXIT_FAILURE);
 	}
 	if (fd > 0)
@@ -41,12 +41,12 @@ int	handle_outfile(t_lexer *redirection)
 	fd = check_append_outfile(redirection);
 	if (fd < 0)
 	{
-		hb_putstr_fd("minishell: outfile: Error\n", STDERR_FILENO);
+		hb_putstr_fd("picoshell: outfile: Error\n", STDERR_FILENO);
 		return (EXIT_FAILURE);
 	}
 	if (fd > 0 && dup2(fd, STDOUT_FILENO) < 0)
 	{
-		hb_putstr_fd("minishell: pipe error\n", STDERR_FILENO);
+		hb_putstr_fd("picoshell: pipe error\n", STDERR_FILENO);
 		return (EXIT_FAILURE);
 	}
 	if (fd > 0)

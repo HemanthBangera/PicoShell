@@ -20,7 +20,28 @@ int check_parameter(char *str)
     return EXIT_SUCCESS;
 }
 
+int	variable_exist(t_tools *tools, char *str)
+{
+	int	i;
 
+	i = 0;
+	if (str[equal_sign(str)] == '\"')
+		delete_quotes(str, '\"');
+	if (str[equal_sign(str)] == '\'')
+		delete_quotes(str, '\'');
+	while (tools->envp[i])
+	{
+		if (hb_strncmp(tools->envp[i],
+				str, equal_sign(tools->envp[i])) == 0)
+		{
+			free(tools->envp[i]);
+			tools->envp[i] = hb_strdup(str);
+			return (1);
+		}
+		i++;
+	}
+	return (0);
+}
 
 char	**whileloop_add_var(char **arr, char **rtn, char *str)
 {
@@ -79,8 +100,8 @@ int mini_export(t_tools *tools,t_simple_cmds *simple_cmd)
     {
         while(simple_cmd->str[i])
         {
-            if(check_parameter(simple_cmd->str[i] == 0) 
-                && variable_exist(tools,simple_cmd->str[i]) == 0)
+            if(check_parameter(simple_cmd->str[i])==0 
+                && variable_exist(tools,simple_cmd->str[i])==0)
                 {
                     if(simple_cmd->str[i])
                     {

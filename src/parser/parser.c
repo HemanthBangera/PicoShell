@@ -36,7 +36,7 @@ int handle_pipe_errors(t_tools *tools,t_tokens token)
     }
     if(!tools->lexer_list)
     {
-        parse_error(0,tools,tools->lexer_list);
+        parser_error(0,tools,tools->lexer_list);
         return(EXIT_FAILURE);
     }
     return (EXIT_SUCCESS);

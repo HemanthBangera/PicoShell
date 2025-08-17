@@ -22,7 +22,15 @@ int specific_path(t_tools *tools,char *str)
     int ret;
 
     tmp = find_path_ret(str,tools);
+	if (!tmp)
+    {
+        hb_putstr_fd("picoshell: ", STDERR_FILENO);
+        hb_putstr_fd(str, STDERR_FILENO);
+        hb_putendl_fd(": not set", STDERR_FILENO);
+        return -1;
+    }
     ret = chdir(tmp);
+	
     if(ret!=0)
     {
         str = hb_substr(str,0,hb_strlen(str)-1);
@@ -30,6 +38,7 @@ int specific_path(t_tools *tools,char *str)
         free(str);
         hb_putendl_fd("not set",STDERR_FILENO);
     }
+	free(tmp);
     return ret;
 }
 
@@ -44,14 +53,20 @@ void	add_path_to_env(t_tools *tools)
 		if (!hb_strncmp(tools->envp[i], "PWD=", 4))
 		{
 			tmp = hb_strjoin("PWD=", tools->pwd);
-			free(tools->envp[i]);
-			tools->envp[i] = tmp;
+			if (tmp)
+            {
+                free(tools->envp[i]);
+                tools->envp[i] = tmp;
+            }
 		}
 		else if (!hb_strncmp(tools->envp[i], "OLDPWD=", 7) && tools->old_pwd)
 		{
 			tmp = hb_strjoin("OLDPWD=", tools->old_pwd);
-			free(tools->envp[i]);
-			tools->envp[i] = tmp;
+			if (tmp)
+            {
+                free(tools->envp[i]);
+                tools->envp[i] = tmp;
+            }
 		}
 		i++;
 	}
@@ -72,7 +87,7 @@ int mini_cd(t_tools *tools,t_simple_cmds *simple_cmd)
         ret = chdir(simple_cmd->str[1]);
         if (ret != 0)
 		{
-			hb_putstr_fd("minishell: ", STDERR_FILENO);
+			hb_putstr_fd("picoshell: ", STDERR_FILENO);
 			hb_putstr_fd(simple_cmd->str[1], STDERR_FILENO);
 			perror(" ");
 		}

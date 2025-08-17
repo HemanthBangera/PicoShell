@@ -25,20 +25,24 @@ int add_node(char *str,t_tokens token,t_lexer **lexer_list)
     return (1);
 }
 
-int read_words(char *str,int i,t_lexer **lexer_list)
-{
-    int j=0;
 
-    while(str[i+j && !(check_token(str[i+j]))])
-    {
-        j += handle_quotes(i+j,str,34);
-        j += handle_quotes(i+j,str,39);
-        if(!add_node(hb_substr(str,i,j),0,lexer_list))
-        {
-            return -1;
-        }
-        return j;
-    }
+int	read_words(char *str,int i, t_lexer **lexer_list)
+{
+	int	j;
+
+	j = 0;
+	while (str[i + j] && !(check_token(str[i + j])))
+	{
+		j += handle_quotes(i + j, str, 34);
+		j += handle_quotes(i + j, str, 39);
+		if (is_whitespace(str[i + j]))
+			break ;
+		else
+			j++;
+	}
+	if (!add_node(hb_substr(str, i, j), 0, lexer_list))
+		return (-1);
+	return (j);
 }
 
 

@@ -2,7 +2,7 @@
 
 int	hb_error(int error, t_tools *tools)
 {
-	hb_putstr_fd("minishell: ", STDERR_FILENO);
+	hb_putstr_fd("picoshell: ", STDERR_FILENO);
 	if (error == 0)
 		hb_putstr_fd("syntax error near unexpected token 'newline'\n",
 			STDERR_FILENO);

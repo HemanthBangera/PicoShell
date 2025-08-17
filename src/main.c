@@ -11,6 +11,10 @@ int main(int argc,char **argv,char **envp){
     }
 
     tools.envp = hb_arrdup(envp);
+    if (!tools.envp) {
+        printf("Error: Failed to duplicate environment variables\n");
+        exit(1);
+    }
     find_pwd(&tools);
     implement_tools(&tools);
     printf("\n%s\n\n",WELCOME_MSG);

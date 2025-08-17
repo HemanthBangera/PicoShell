@@ -2,6 +2,9 @@
 # define PARSER_H
 # include "picoshell.h"
 
+typedef struct s_tools t_tools;
+typedef struct s_simple_cmds t_simple_cmds;
+
 typedef enum s_tokens
 {
     PIPE = 1,

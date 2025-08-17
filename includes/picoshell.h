@@ -1,6 +1,6 @@
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#ifndef PICOSHELL_H
+# define PICOSHELL_H
 # include <stdio.h>
 # include <stdlib.h>
 # include <stddef.h>
@@ -9,6 +9,9 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <signal.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+
 
 # include "libhb.h"
 # include "parser.h"
@@ -35,6 +38,7 @@ int	question_mark(char **tmp);
 void sigint_handler(int sig);
 void sigquit_handler(int sig);
 void init_signals(void);
+int	reset_tools(t_tools *tools);
 
 
 

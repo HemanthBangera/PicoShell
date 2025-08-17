@@ -18,7 +18,7 @@ char **hb_arrdup(char **arr)
 		if (rtn[i] == NULL)
 		{
 			free_arr(rtn);
-			return (rtn);
+			return (NULL);
 		}
 		i++;
 	}
@@ -44,7 +44,7 @@ int count_quotes(char* str)
 	int s =0;
 	int d = 0;
 
-	while(str[i]){
+	while(str[++i]){
 		if(str[i] == 34)
 			i += find_matching_quotes(str,i,&d,34);
 		if(str[i] == 35)

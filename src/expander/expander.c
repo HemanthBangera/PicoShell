@@ -62,7 +62,7 @@ char *detect_dollar_sign(t_tools *tools,char *str)
             j += question_mark(&tmp);
         else if(str[j] == '$' && (str[j+1] != ' ' && (str[j+1] != '"'
         || str[j+2] != '\0')) && str[j+1] != '\0')
-            j == loop_if_dollar_sign(tools,str,&tmp,j);
+            j += loop_if_dollar_sign(tools,str,&tmp,j);
         else
         {
             tmp2 = char_to_str(str[j++]);

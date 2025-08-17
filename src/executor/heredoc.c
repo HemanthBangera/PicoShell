@@ -1,4 +1,5 @@
 #include "executor.h"
+#include <sys/stat.h>
 
 
 
@@ -7,6 +8,20 @@ char *generate_heredoc_filename(void)
     static int i=0;
     char *num;
     char *file_name;
+    struct stat st;
+
+    // Check if build directory exists
+    if (stat("build", &st) == -1) {
+        // Directory doesn't exist, create it
+        if (mkdir("build", 0777) < 0) {
+            perror("picoshell: mkdir");
+            return NULL;
+        }
+    } else if (!S_ISDIR(st.st_mode)) {
+        // Path exists but is not a directory
+        fprintf(stderr, "picoshell: build exists but is not a directory\n");
+        return NULL;
+    }
 
     num = hb_itoa(i++);
     file_name = hb_strjoin("build/.tmp_heredoc_file_",num);

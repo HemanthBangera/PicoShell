@@ -22,7 +22,13 @@ void change_path(t_tools *tools)
 	free(tools->old_pwd);
 	tools->old_pwd = tmp;
 	free(tools->pwd);
-	tools->pwd = getcwd(NULL,sizeof(NULL));
+	tools->pwd = getcwd(NULL,0);
+	if (!tools->pwd)
+    {
+        perror("picoshell: getcwd");
+        tools->pwd = tmp; 
+        tools->old_pwd = NULL;
+    }
 }
 
 int	check_valid_identifier(char c)

@@ -25,7 +25,7 @@ int	reset_tools(t_tools *tools)
 	free_arr(tools->paths);
 	implement_tools(tools);
 	tools->reset = true;
-	minishell_loop(tools);
+	picoshell_loop(tools);
 	return (1);
 }
 
@@ -55,20 +55,22 @@ int picoshell_loop(t_tools *tools){
     tmp = hb_strtrim(tools->args," ");
     free(tools->args);
     tools->args = tmp;
+
     if(!tools->args){
         hb_putendl_fd("exit",STDERR_FILENO);
         exit(EXIT_SUCCESS);
     }
-    if(tools->args[0]=='\0'){
+    if(!tools->args||tools->args[0]=='\0'){
         return (reset_tools(tools));
     }
     add_history(tools->args);
-    
     if(!count_quotes(tools->args)){
         return (hb_error(2,tools));
     }
     if(!token_reader(tools))
+    {
         return (hb_error(1,tools));
+    }
     parser(tools);
     prepare_executor(tools);
 	reset_tools(tools);

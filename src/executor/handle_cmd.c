@@ -72,7 +72,7 @@ void single_cmd(t_simple_cmds *cmd,t_tools *tools)
 	if(pid ==0)
 		 handle_cmd(cmd,tools);
 	waitpid(pid,&status,0);
-	if(WIFEEXITED(status))
+	if(WIFEXITED(status))
 		g_global.error_num = WEXITSTATUS(status);
 
 }

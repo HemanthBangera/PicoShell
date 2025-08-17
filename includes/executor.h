@@ -18,6 +18,7 @@ int find_cmd(t_simple_cmds *cmd,t_tools *tools);
 void handle_cmd(t_simple_cmds *cmd,t_tools *tools);
 void single_cmd(t_simple_cmds *cmd,t_tools *tools);
 void dup_cmd(t_simple_cmds *cmd, t_tools *tools, int end[2], int fd_in);
+int executor(t_tools *tools);
 
 
 #endif
