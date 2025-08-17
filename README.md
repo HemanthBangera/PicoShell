@@ -196,7 +196,7 @@ make
 ---
 
 <p align="center">
-  ⭐ <b>If you found PicoShell useful, please consider starring the repo!</b> ⭐
+  ⭐ <b>If you have made this far, please consider starring the repo!</b> ⭐
 </p>
 
 <p align="center">
