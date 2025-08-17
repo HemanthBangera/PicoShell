@@ -41,7 +41,7 @@ typedef struct s_lexer {
     struct s_lexer *next;   // Next token
     struct s_lexer *prev;   // Previous token
 } t_lexer;
-
+```
 
 ## Quick Start
 
@@ -65,3 +65,4 @@ make
 
 # Run the shell
 ./picoshell
+```
