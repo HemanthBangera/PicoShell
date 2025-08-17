@@ -1,0 +1,25 @@
+# Build directory
+build/
+
+# Object files
+*.o
+*.obj
+
+# Executable
+picoshell
+
+# Temporary files
+.tmp*
+*.tmp
+*~
+
+# OS specific files
+.DS_Store
+.vscode/
+.idea/
+
+# Debug files
+*.dSYM/
+
+# Dependencies
+*.d
