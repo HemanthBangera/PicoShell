@@ -1,4 +1,4 @@
-# PicoShell 🐚
+# PicoShell
 
 ![PicoShell Banner](src/assets/image.png)
 
@@ -10,9 +10,9 @@
 
 A lightweight shell implementation written in C that recreates core functionality of a Unix shell. PicoShell is an educational project designed to demonstrate systems programming concepts while providing a functional shell environment with lexing, parsing, command execution, pipelines, redirections, environment expansion, builtins, and heredocs.
 
-## ✨ Features
+## Features
 
-- **Complete Shell Pipeline**: Lexer → Parser → AST → Executor
+- **Complete Shell Pipeline**: Input String → Lexer → Parser → Simple Commands → Executor
 - **Advanced I/O**: Input/Output redirection and pipelines
 - **Environment Management**: Variable expansion and manipulation
 - **Built-in Commands**: Essential shell builtins implementation
@@ -20,13 +20,14 @@ A lightweight shell implementation written in C that recreates core functionalit
 - **Error Handling**: Comprehensive error reporting
 - **Memory Safe**: Proper memory management and cleanup
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
 - GCC compiler (C99 or later)
 - Make
-- Unix-like operating system (Linux, macOS)
+- Readline library (libreadline-dev on Ubuntu/Debian, readline on macOS via Homebrew)
+- Unix-like operating system (Linux, macOS, Windows with WSL)
 
 ### Installation
 
