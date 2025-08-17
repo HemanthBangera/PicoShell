@@ -1,5 +1,7 @@
 # PicoShell 🐚
 
+![PicoShell Banner](src/assests/image.png)
+
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://github.com/HemanthBangera/PicoShell)
 [![Language](https://img.shields.io/badge/language-C-blue.svg)](https://github.com/HemanthBangera/PicoShell)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
